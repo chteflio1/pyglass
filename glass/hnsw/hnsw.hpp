@@ -16,8 +16,8 @@ namespace glass {
 struct HNSW : public Builder {
   int nb, dim;
   int M, efConstruction;
-  std::unique_ptr<hnswlib::HierarchicalNSW<float>> hnsw = nullptr;
-  std::unique_ptr<hnswlib::SpaceInterface<float>> space = nullptr;
+  std::unique_ptr<glass_hnswlib::HierarchicalNSW<float>> hnsw = nullptr;
+  std::unique_ptr<glass_hnswlib::SpaceInterface<float>> space = nullptr;
 
   Graph<int> final_graph;
 
@@ -25,9 +25,9 @@ struct HNSW : public Builder {
       : dim(dim), M(R / 2), efConstruction(L) {
     auto m = metric_map[metric];
     if (m == Metric::L2) {
-      space = std::make_unique<hnswlib::L2Space>(dim);
+      space = std::make_unique<glass_hnswlib::L2Space>(dim);
     } else if (m == Metric::IP) {
-      space = std::make_unique<hnswlib::InnerProductSpace>(dim);
+      space = std::make_unique<glass_hnswlib::InnerProductSpace>(dim);
     } else {
       printf("Unsupported metric type\n");
     }
@@ -35,7 +35,7 @@ struct HNSW : public Builder {
 
   void Build(float *data, int N) override {
     nb = N;
-    hnsw = std::make_unique<hnswlib::HierarchicalNSW<float>>(space.get(), N, M,
+    hnsw = std::make_unique<glass_hnswlib::HierarchicalNSW<float>>(space.get(), N, M,
                                                              efConstruction);
     std::atomic<int> cnt{0};
     auto st = std::chrono::high_resolution_clock::now();

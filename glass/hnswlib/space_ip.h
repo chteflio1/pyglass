@@ -1,7 +1,7 @@
 #pragma once
 #include "hnswlib.h"
 
-namespace hnswlib {
+namespace glass_hnswlib {
 
 static float
 InnerProduct(const void *pVect1, const void *pVect2, const void *qty_ptr) {
@@ -372,4 +372,4 @@ class InnerProductSpace : public SpaceInterface<float> {
 ~InnerProductSpace() {}
 };
 
-}  // namespace hnswlib
+}  // namespace glass_hnswlib

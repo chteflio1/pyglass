@@ -10,7 +10,7 @@
 #include <unordered_map>
 #include <unordered_set>
 
-namespace hnswlib {
+namespace glass_hnswlib {
 typedef unsigned int tableint;
 typedef unsigned int linklistsizeint;
 
@@ -1262,4 +1262,4 @@ public:
               << " connections\n";
   }
 };
-} // namespace hnswlib
+} // namespace glass_hnswlib

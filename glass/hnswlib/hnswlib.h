@@ -111,13 +111,13 @@ static uint64_t xgetbv(unsigned int index) {
 #include <string.h>
 #include <vector>
 
-namespace hnswlib {
+namespace glass_hnswlib {
 typedef size_t labeltype;
 
 // This can be extended to store state for filtering (e.g. from a std::set)
 class BaseFilterFunctor {
 public:
-  virtual bool operator()(hnswlib::labeltype) { return true; }
+  virtual bool operator()(glass_hnswlib::labeltype) { return true; }
 };
 
 template <typename T> class pairGreater {
@@ -186,7 +186,7 @@ AlgorithmInterface<dist_t>::searchKnnCloserFirst(
 
   return result;
 }
-} // namespace hnswlib
+} // namespace glass_hnswlib
 
 #include "hnswalg.h"
 #include "space_ip.h"
